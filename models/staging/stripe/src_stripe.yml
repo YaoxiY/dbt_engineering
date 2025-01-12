@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: stripe
+    database: transforming
+    schema: dbo
+    tables: 
+      - name: payments
+
+        
