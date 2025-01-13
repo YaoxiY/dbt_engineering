@@ -3,4 +3,4 @@ SELECT
     USER_ID AS customer_id,
     ORDER_DATE AS order_date,
     STATUS AS status
-FROM dbo.orders
+FROM {{ source('jaffle_shop', 'orders') }}
