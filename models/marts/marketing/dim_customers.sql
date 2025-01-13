@@ -12,7 +12,7 @@ customer_orders as (
         count(order_id) as number_of_orders,
         sum(amount) as lifetime_value
     from orders
-    group by 1
+    group by customer_id
 ),
  final as (
     select
@@ -24,6 +24,7 @@ customer_orders as (
         coalesce (customer_orders.number_of_orders, 0) as number_of_orders,
         customer_orders.lifetime_value
     from customers
-    left join customer_orders using (customer_id)
+    left join customer_orders 
+    on customers.customer_id = customer_orders.customer_id
 )
 select * from final
